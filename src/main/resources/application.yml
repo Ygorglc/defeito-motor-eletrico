@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: defeito-motor-eletrico
+  datasource:
+    url: ${POSTGRES_DB:jdbc:postgresql://localhost:5432/TCC}
+    username: ${POSTGRES_USER_DB:postgres}
+    password: ${POSTGRES_PASS_DB:postgres}
+  jpa:
+    show-sql: true
+    generate-ddl: true
