@@ -8,3 +8,7 @@ spring:
   jpa:
     show-sql: true
     generate-ddl: true
+
+
+acesso-externo:
+  uri:        http://gateway-server:5555/siisp-acesso/v1/usuarios/cpf/
