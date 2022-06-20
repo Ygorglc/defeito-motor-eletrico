@@ -19,4 +19,32 @@ public class Tempo {
     @JoinColumn(name = "FKATEMPO_TESTE")
     private Teste teste;
 
+    public Tempo(double valorTempo, Teste teste) {
+        this.valorTempo = valorTempo;
+        this.teste = teste;
+    }
+
+    public Tempo() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public double getValorTempo() {
+        return valorTempo;
+    }
+
+    public void setValorTempo(double valorTempo) {
+        this.valorTempo = valorTempo;
+    }
+
+    public Teste getTeste() {
+        return teste;
+    }
+
+    public void setTeste(Teste teste) {
+        this.teste = teste;
+    }
 }

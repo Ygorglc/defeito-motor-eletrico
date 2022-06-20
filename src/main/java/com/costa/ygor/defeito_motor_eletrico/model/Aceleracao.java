@@ -19,4 +19,32 @@ public class Aceleracao {
     @JoinColumn(name = "FKACELERACAO_TESTE")
     private Teste teste;
 
+    public Aceleracao(double valorAcelecao, Teste teste) {
+        this.valorAcelecao = valorAcelecao;
+        this.teste = teste;
+    }
+
+    public Aceleracao() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public double getValorAcelecao() {
+        return valorAcelecao;
+    }
+
+    public void setValorAcelecao(double valorAcelecao) {
+        this.valorAcelecao = valorAcelecao;
+    }
+
+    public Teste getTeste() {
+        return teste;
+    }
+
+    public void setTeste(Teste teste) {
+        this.teste = teste;
+    }
 }
