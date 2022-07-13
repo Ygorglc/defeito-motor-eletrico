@@ -68,23 +68,26 @@ public class DadosService {
         return tempoSalvoList;
     }
 
-    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) throws Exception {
-        List<DadosDto> dadosDtoList = espRestEndPointService.recuperaDados(quantidadeDeAmostras);
-        List<Aceleracao> aceleracaoList = new ArrayList<>();
-        List<Aceleracao> aceleracaoSalvoList = new ArrayList<>();
-        List<Tempo> tempoList = new ArrayList<>();
-        List<Tempo> tempoSalvoList = new ArrayList<>();
-
-        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
-
-        List<DadosResponse> dadosResponseList = new ArrayList<>();
-
-        dadosDtoList.forEach(dadosDto -> );
-
-    }
-
-    private Map<Aceleracao,Tempo>
+//    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) throws Exception {
+//        List<DadosDto> dadosDtoList = espRestEndPointService.recuperaDados(quantidadeDeAmostras);
+//        List<Aceleracao> aceleracaoList = new ArrayList<>();
+//        List<Aceleracao> aceleracaoSalvoList = new ArrayList<>();
+//        List<Tempo> tempoList = new ArrayList<>();
+//        List<Tempo> tempoSalvoList = new ArrayList<>();
+//
+//        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
+//
+//        List<DadosResponse> dadosResponseList = new ArrayList<>();
+//
+//        dadosDtoList.forEach(dadosDto -> );
+//
+//    }
+//
+//    private Map<Aceleracao,Tempo>
     public void recuperarDados(Long quantidadeDeAmostras) {
         espRestEndPointService.coletaDados(quantidadeDeAmostras);
     }
+
+//    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) {
+//    }
 }
