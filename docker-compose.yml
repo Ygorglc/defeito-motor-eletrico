@@ -11,7 +11,7 @@ services:
     environment:
       TZ: "America/Sao_Paulo"
       YGOR_DB: ${YGOR_DB}
-      YGOR_USER: ${YGOR_USER}
-      YGOR_PASSWORD: ${YGOR_PASSWORD}
+      YGOR_USER_DB: ${YGOR_USER_DB}
+      YGOR_PASSWORD_DB: ${YGOR_PASSWORD_DB}
     volumes:
       - /etc/localtime:/etc/localtime
