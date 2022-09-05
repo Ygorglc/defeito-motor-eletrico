@@ -7,6 +7,7 @@ import com.costa.ygor.defeito_motor_eletrico.controller.response.DadosResponse;
 import com.costa.ygor.defeito_motor_eletrico.model.Aceleracao;
 import com.costa.ygor.defeito_motor_eletrico.model.Tempo;
 import com.costa.ygor.defeito_motor_eletrico.service.DadosService;
+import com.costa.ygor.defeito_motor_eletrico.service.EspRestService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,11 @@ public class DadosController {
 
     private DadosService dadosService;
 
-    public DadosController(DadosService dadosService) {
+    private EspRestService espRestService;
+
+    public DadosController(DadosService dadosService, EspRestService espRestService) {
         this.dadosService = dadosService;
+        this.espRestService = espRestService;
     }
 
     @GetMapping("aceleracao/{quantidadeDeAmostras}/{idTeste}")
@@ -41,15 +45,15 @@ public class DadosController {
                                    @PathVariable Long idTeste) throws Exception {
         return dadosService.buscarTempo(quantidadeDeAmostras, idTeste);
     }
-    @GetMapping("/dados/{quantidadeDeAmostras}")
-    @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Coleta os dados de aceleraçaõ e tempo",
-            description = "Coleta os dados de aceleração e de tempo no ESP",
-            tags = {"dados"})
-    public List<DadosResponse> buscarDados(@PathVariable Long quantidadeDeAmostras,
-                                           @PathVariable Long idTeste) throws Exception {
-        return dadosService.buscarDados(quantidadeDeAmostras, idTeste);
-    }
+//    @GetMapping("/dados/{quantidadeDeAmostras}")
+//    @ResponseStatus(HttpStatus.OK)
+//    @Operation(summary = "Coleta os dados de aceleraçaõ e tempo",
+//            description = "Coleta os dados de aceleração e de tempo no ESP",
+//            tags = {"dados"})
+//    public List<DadosResponse> buscarDados(@PathVariable Long quantidadeDeAmostras,
+//                                           @PathVariable Long idTeste) throws Exception {
+//        return dadosService.buscarDados(quantidadeDeAmostras, idTeste);
+//    }
     @GetMapping("/recupera/{quantidadeDeAmostras}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Faz o ESP armazenar os dados.",
@@ -57,5 +61,14 @@ public class DadosController {
             tags = {"dados"})
     public void recuperarDados(@PathVariable Long quantidadeDeAmostras) throws Exception {
         dadosService.recuperarDados(quantidadeDeAmostras);
+    }
+
+    @GetMapping("/iniciando")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Faz o ESP armazenar os dados nos vetores.",
+            description = "Faz o ESP armazenar os dados nosvetores nele para coleta posterior.",
+            tags = {"dados"})
+    public void iniciandorDados() throws Exception {
+        espRestService.iniciarDados();
     }
 }
