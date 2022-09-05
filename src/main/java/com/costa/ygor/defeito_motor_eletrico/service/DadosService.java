@@ -79,11 +79,10 @@ public class DadosService {
 
         List<DadosResponse> dadosResponseList = new ArrayList<>();
 
-        dadosDtoList.forEach(dadosDto -> );
+        return  new ArrayList<>();
 
     }
 
-    private Map<Aceleracao,Tempo>
     public void recuperarDados(Long quantidadeDeAmostras) {
         espRestEndPointService.coletaDados(quantidadeDeAmostras);
     }
