@@ -68,7 +68,6 @@ public class DadosService {
         return tempoSalvoList;
     }
 
-<<<<<<< HEAD
     public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) throws Exception {
         List<DadosDto> dadosDtoList = espRestEndPointService.recuperaDados(quantidadeDeAmostras);
         List<Aceleracao> aceleracaoList = new ArrayList<>();
@@ -84,7 +83,7 @@ public class DadosService {
 
     }
 
-=======
+
 //    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) throws Exception {
 //        List<DadosDto> dadosDtoList = espRestEndPointService.recuperaDados(quantidadeDeAmostras);
 //        List<Aceleracao> aceleracaoList = new ArrayList<>();
@@ -101,7 +100,7 @@ public class DadosService {
 //    }
 //
 //    private Map<Aceleracao,Tempo>
->>>>>>> 014ae1ec2f1cc3497d02e6924b1d86f53cc3f1e1
+
     public void recuperarDados(Long quantidadeDeAmostras) {
         espRestEndPointService.coletaDados(quantidadeDeAmostras);
     }
