@@ -13,9 +13,13 @@ spring:
     hibernate:
       ddl-auto: update
 server:
-  port: 8080
+  port: 8085
   servlet:
     context-path: /defeito-motor-eletrico
+
+#springdoc:
+#  api-docs:
+#    path: /api-docs
 
 acesso-externo:
   uri: http://gateway-server:5555/siisp-acesso/v1/usuarios/cpf/
