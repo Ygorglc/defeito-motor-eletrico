@@ -3,9 +3,9 @@ spring:
     name: defeito-motor-eletrico
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${YGOR_DB}
-    username: ${YGOR_USER_DB}
-    password: ${YGOR_PASSWORD_DB}
+    url: ${YGOR_DB:jdbc:postgresql://93.188.161.151:5432/TCC}
+    username: ${YGOR_USER_DB:ygor_adm}
+    password: ${YGOR_PASSWORD_DB:1234}
   jpa:
     show-sql: true
     generate-ddl: true
