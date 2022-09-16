@@ -8,4 +8,4 @@ echo "Build Image"
 docker build -t defeito-motor-eletrico:0.1 .
 
 echo "Run"
-docker-compose up -d --build
+docker compose up -d --build
