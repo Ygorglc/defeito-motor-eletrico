@@ -3,9 +3,11 @@ package com.costa.ygor.defeito_motor_eletrico.controller;
 import com.costa.ygor.defeito_motor_eletrico.controller.dto.AceleracaoDto;
 import com.costa.ygor.defeito_motor_eletrico.controller.dto.DadosDto;
 import com.costa.ygor.defeito_motor_eletrico.controller.dto.TempoDto;
+import com.costa.ygor.defeito_motor_eletrico.controller.request.DadosRequest;
 import com.costa.ygor.defeito_motor_eletrico.controller.response.DadosResponse;
 import com.costa.ygor.defeito_motor_eletrico.model.Aceleracao;
 import com.costa.ygor.defeito_motor_eletrico.model.Tempo;
+import com.costa.ygor.defeito_motor_eletrico.model.Testando_Esp_Rest;
 import com.costa.ygor.defeito_motor_eletrico.service.DadosService;
 import com.costa.ygor.defeito_motor_eletrico.service.EspRestService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -70,5 +72,14 @@ public class DadosController {
             tags = {"dados"})
     public void iniciandorDados() throws Exception {
         espRestService.iniciarDados();
+    }
+
+    @PostMapping("/dados-brutos")
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Faz o ESP armazenar os dados brutos nas tabelas.",
+            description = "Faz o ESP armazenar os dados brutos nas tabelas para formar os vetores futuros.",
+            tags = {"dados"})
+    public DadosResponse salvar(@RequestBody DadosRequest dadosRequest){
+        return dadosService.salvandoDadosRequest(dadosRequest);
     }
 }

@@ -32,15 +32,12 @@ public class DadosService {
     private DeslocamentoRepository deslocamentoRepository;
 
 
-    public DadosService(EspRestEndPointService espRestEndPointService,
-                        TesteRepository testeRepository,
-                        AceleracaoRepository aceleracaoRepository,
-                        TempoRepository tempoRepository,
-                        DeslocamentoRepository deslocamentoRepository) {
+    public DadosService(EspRestEndPointService espRestEndPointService, TesteRepository testeRepository, AceleracaoRepository aceleracaoRepository, TempoRepository tempoRepository, GiroRepository giroRepository, DeslocamentoRepository deslocamentoRepository) {
         this.espRestEndPointService = espRestEndPointService;
         this.testeRepository = testeRepository;
         this.aceleracaoRepository = aceleracaoRepository;
         this.tempoRepository = tempoRepository;
+        this.giroRepository = giroRepository;
         this.deslocamentoRepository = deslocamentoRepository;
     }
 
@@ -108,14 +105,13 @@ public class DadosService {
 //    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) {
 //    }
 
-    private DadosResponse dadosResponseParaEntidade(DadosRequest dadosRequest){
+    public DadosResponse salvandoDadosRequest(DadosRequest dadosRequest){
         Teste teste = testeRepository.findById(dadosRequest.idTeste()).orElseThrow(()->new EntidadeNaoEncontradaException("Não foi encontrado teste com esse id!!"));
         Aceleracao aceleracao = new Aceleracao(dadosRequest.aceleracao_eixo_x(), dadosRequest.aceleracao_eixo_y(), dadosRequest.aceleracao_eixo_z(), teste);
         Aceleracao aceleracaoSalva = aceleracaoRepository.save(aceleracao);
 
         Giro giro = new Giro(dadosRequest.posicao(), dadosRequest.giro_eixo_x(), dadosRequest.giro_eixo_y(), dadosRequest.giro_eixo_z(), teste);
         Giro giroSalvo = giroRepository.save(giro);
-
 
         Tempo tempo = new Tempo(dadosRequest.tempo(),teste);
         Tempo tempoSalvo = tempoRepository.save(tempo);
