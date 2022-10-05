@@ -12,14 +12,18 @@ public class Tempo {
     @Column(name = "ID")
     private Long id;
 
+    @Column(name = "POSICAO")
+    private Long posicao;
+
     @Column(name = "VALOR_TEMPO")
-    private double valorTempo;
+    private Double valorTempo;
 
     @ManyToOne
     @JoinColumn(name = "FKATEMPO_TESTE")
     private Teste teste;
 
-    public Tempo(double valorTempo, Teste teste) {
+    public Tempo(Double valorTempo, Teste teste) {
+        this.posicao = posicao;
         this.valorTempo = valorTempo;
         this.teste = teste;
     }
@@ -32,11 +36,11 @@ public class Tempo {
         return id;
     }
 
-    public double getValorTempo() {
+    public Double getValorTempo() {
         return valorTempo;
     }
 
-    public void setValorTempo(double valorTempo) {
+    public void setValorTempo(Double valorTempo) {
         this.valorTempo = valorTempo;
     }
 
@@ -46,5 +50,17 @@ public class Tempo {
 
     public void setTeste(Teste teste) {
         this.teste = teste;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(Long posicao) {
+        this.posicao = posicao;
     }
 }

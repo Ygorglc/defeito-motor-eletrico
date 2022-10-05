@@ -3,20 +3,18 @@ package com.costa.ygor.defeito_motor_eletrico.service;
 import com.costa.ygor.defeito_motor_eletrico.controller.dto.AceleracaoDto;
 import com.costa.ygor.defeito_motor_eletrico.controller.dto.DadosDto;
 import com.costa.ygor.defeito_motor_eletrico.controller.dto.TempoDto;
+import com.costa.ygor.defeito_motor_eletrico.controller.request.DadosRequest;
 import com.costa.ygor.defeito_motor_eletrico.controller.response.DadosResponse;
+import com.costa.ygor.defeito_motor_eletrico.exception.EntidadeNaoEncontradaException;
 import com.costa.ygor.defeito_motor_eletrico.model.Aceleracao;
+import com.costa.ygor.defeito_motor_eletrico.model.Giro;
 import com.costa.ygor.defeito_motor_eletrico.model.Tempo;
 import com.costa.ygor.defeito_motor_eletrico.model.Teste;
-import com.costa.ygor.defeito_motor_eletrico.repositories.AceleracaoRepository;
-import com.costa.ygor.defeito_motor_eletrico.repositories.DeslocamentoRepository;
-import com.costa.ygor.defeito_motor_eletrico.repositories.TempoRepository;
-import com.costa.ygor.defeito_motor_eletrico.repositories.TesteRepository;
+import com.costa.ygor.defeito_motor_eletrico.repositories.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class DadosService {
@@ -28,6 +26,8 @@ public class DadosService {
     private AceleracaoRepository aceleracaoRepository;
 
     private TempoRepository tempoRepository;
+
+    private GiroRepository giroRepository;
 
     private DeslocamentoRepository deslocamentoRepository;
 
@@ -51,8 +51,8 @@ public class DadosService {
 
         Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
 
-        aceleracaoDtoLista.forEach(aceleracaoDto -> aceleracaoList.add(new Aceleracao(aceleracaoDto.getAceleracao(),teste)));
-        aceleracaoList.forEach(aceleracao -> aceleracaoSalvoList.add(aceleracaoRepository.save(aceleracao)));
+//        aceleracaoDtoLista.forEach(aceleracaoDto -> aceleracaoList.add(new Aceleracao(aceleracaoDto.getAceleracao(),teste)));
+//        aceleracaoList.forEach(aceleracao -> aceleracaoSalvoList.add(aceleracaoRepository.save(aceleracao)));
         return aceleracaoSalvoList;
     }
 
@@ -107,4 +107,27 @@ public class DadosService {
 
 //    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) {
 //    }
+
+    private DadosResponse dadosResponseParaEntidade(DadosRequest dadosRequest){
+        Teste teste = testeRepository.findById(dadosRequest.idTeste()).orElseThrow(()->new EntidadeNaoEncontradaException("Não foi encontrado teste com esse id!!"));
+        Aceleracao aceleracao = new Aceleracao(dadosRequest.aceleracao_eixo_x(), dadosRequest.aceleracao_eixo_y(), dadosRequest.aceleracao_eixo_z(), teste);
+        Aceleracao aceleracaoSalva = aceleracaoRepository.save(aceleracao);
+
+        Giro giro = new Giro(dadosRequest.posicao(), dadosRequest.giro_eixo_x(), dadosRequest.giro_eixo_y(), dadosRequest.giro_eixo_z(), teste);
+        Giro giroSalvo = giroRepository.save(giro);
+
+
+        Tempo tempo = new Tempo(dadosRequest.tempo(),teste);
+        Tempo tempoSalvo = tempoRepository.save(tempo);
+
+        return new DadosResponse(aceleracaoSalva.getEixo_x(),
+                aceleracaoSalva.getEixo_y(),
+                aceleracaoSalva.getEixo_z(),
+                giroSalvo.getEixo_x(),
+                giroSalvo.getEixo_y(),
+                giroSalvo.getEixo_z(),
+                tempoSalvo.getValorTempo(),
+                tempoSalvo.getPosicao(),
+                teste.getId());
+    }
 }

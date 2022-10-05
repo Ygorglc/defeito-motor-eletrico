@@ -1,6 +1,6 @@
-package com.costa.ygor.defeito_motor_eletrico.controller.response;
+package com.costa.ygor.defeito_motor_eletrico.controller.request;
 
-public record DadosResponse(
+public record DadosRequest(
         Double aceleracao_eixo_x,
         Double aceleracao_eixo_y,
         Double aceleracao_eixo_z,

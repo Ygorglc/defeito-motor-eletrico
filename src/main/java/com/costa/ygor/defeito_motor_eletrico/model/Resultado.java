@@ -19,7 +19,7 @@ public class Resultado {
     private String descicao;
 
     @OneToOne
-    @JoinColumn(name = "FKRESULTADO_TESTE")
+    @JoinColumn(name = "FK_TESTE")
     private Teste teste;
 
 }

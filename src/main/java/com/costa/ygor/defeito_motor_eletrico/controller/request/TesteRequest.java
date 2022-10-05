@@ -4,5 +4,7 @@ import java.time.LocalDate;
 
 public record TesteRequest(Long id,
                            String descricao,
-                           LocalDate data) {
+                           LocalDate data,
+                           String titulo,
+                           Long idNo) {
 }
