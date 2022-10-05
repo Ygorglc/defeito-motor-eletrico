@@ -32,7 +32,7 @@ public class MqttBeans {
 		MqttConnectOptions options = new MqttConnectOptions();
 
 		options.setServerURIs(new String[] { "tcp://localhost:1883" });
-		options.setUserName("admin");
+		options.setUserName("ygor_admin");
 		String pass = "TESTE_1234";
 		options.setPassword(pass.toCharArray());
 		options.setCleanSession(true);
