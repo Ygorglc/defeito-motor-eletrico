@@ -31,7 +31,7 @@ public class MqttBeans {
 		DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
 		MqttConnectOptions options = new MqttConnectOptions();
 
-		options.setServerURIs(new String[] { "tcp://localhost:1883" });
+		options.setServerURIs(new String[] { "tcp://localhost:8083" });
 		options.setUserName("ygor_admin");
 		String pass = "TESTE_1234";
 		options.setPassword(pass.toCharArray());
