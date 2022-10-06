@@ -1,11 +1,10 @@
-package com.costa.ygor.defeito_motor_eletrico.config;
+package com.costa.ygor.defeito_motor_eletrico.config.mqtt;
 
 import org.springframework.integration.annotation.MessagingGateway;
 import org.springframework.integration.mqtt.support.MqttHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 
-@MessagingGateway(defaultRequestChannel = "mqttOutboundChannel")
+@MessagingGateway(defaultRequestChannel = "mqttOutputChannel")
 public interface MqttGateway {
-
-	void senToMqtt(String data, @Header(MqttHeaders.TOPIC) String topic);
+    void sendToMqtt(String data, @Header(MqttHeaders.TOPIC) String topic);
 }

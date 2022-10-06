@@ -23,3 +23,16 @@ server:
 
 acesso-externo:
   uri: http://gateway-server:5555/siisp-acesso/v1/usuarios/cpf/
+
+
+mqtt:
+  username: ygor_admin
+  password: TESTE_1234
+  host-url:
+    - tcp://93.188.161.151:1883
+  client-id: mqttId2
+  default-topic: topic
+  connection-timeout: 3000
+  subscription-topic:
+    - $share/group1/hello
+    - $share/group1/hello1
