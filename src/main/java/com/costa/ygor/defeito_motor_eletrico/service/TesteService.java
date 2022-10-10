@@ -53,6 +53,11 @@ public class TesteService {
         testeList.forEach(teste -> testeResponseList.add(entityParaResponse(teste)));
         return testeResponseList;
     }
+    public TesteResponse listarDadosColetados(Long id) throws Exception {
+        Teste teste = testeRepository.findById(id).orElseThrow(()->new EntidadeNaoEncontradaException("Não foi encontrado teste com esse id!!"));
+        TesteResponse testeResponse =  entityParaResponse(teste);
+
+    }
 
     public void deletar(Long id) throws Exception{
         Teste teste = testeRepository.findById(id).orElseThrow(()->new EntidadeNaoEncontradaException("Não foi encontrado teste com esse id!!"));

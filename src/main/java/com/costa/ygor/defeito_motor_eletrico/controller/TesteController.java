@@ -55,6 +55,15 @@ public class TesteController {
         return testeService.listar();
     }
 
+    @GetMapping("dados-coletados/id")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Lista todos os testes e os dados coletados",
+            description = "Lista todos os testes existentes e os dados coletados",
+            tags = {"teste"})
+    public List<TesteResponse> listarDadosColetados(@PathVariable Long id){
+        return testeService.listar();
+    }
+
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "Deleta um teste",
