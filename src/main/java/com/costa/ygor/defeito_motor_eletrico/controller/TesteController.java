@@ -1,6 +1,7 @@
 package com.costa.ygor.defeito_motor_eletrico.controller;
 
 import com.costa.ygor.defeito_motor_eletrico.controller.request.TesteRequest;
+import com.costa.ygor.defeito_motor_eletrico.controller.response.TesteComDadosResponse;
 import com.costa.ygor.defeito_motor_eletrico.controller.response.TesteResponse;
 import com.costa.ygor.defeito_motor_eletrico.service.TesteService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -55,16 +56,20 @@ public class TesteController {
         return testeService.listar();
     }
 
-    @GetMapping("dados-coletados/id")
+    @GetMapping("dados-coletados/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Lista todos os testes e os dados coletados",
             description = "Lista todos os testes existentes e os dados coletados",
             tags = {"teste"})
-    public List<TesteResponse> listarDadosColetados(@PathVariable Long id){
-        return testeService.listarDadosColetados(id);
+    public TesteComDadosResponse listarDadosColetados(@PathVariable Long id) throws Exception {
+        try {
+            return testeService.listarDadosColetados(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "Deleta um teste",
             description = "Deletaum teste pelo id",
