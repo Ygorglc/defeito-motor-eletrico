@@ -29,7 +29,7 @@ mqtt:
   username: ygor_admin
   password: TESTE_1234
   host-url:
-    - tcp://93:188:161151:1883
+    - tcp://93:188:161.151:1883
   client-id: mqttId2
   default-topic: topic
   connection-timeout: 3000
