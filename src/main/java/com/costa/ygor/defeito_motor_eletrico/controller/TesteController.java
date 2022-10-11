@@ -61,7 +61,7 @@ public class TesteController {
             description = "Lista todos os testes existentes e os dados coletados",
             tags = {"teste"})
     public List<TesteResponse> listarDadosColetados(@PathVariable Long id){
-        return testeService.listar();
+        return testeService.listarDadosColetados(id);
     }
 
     @DeleteMapping("{id}")
