@@ -3,7 +3,7 @@ spring:
     name: defeito-motor-eletrico
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${YGOR_DB:jdbc:postgresql://localhost:5432/TCC}
+    url: ${YGOR_DB:jdbc:postgresql://93.188.161.151:5432/TCC}
     username: ${YGOR_USER_DB:ygor_adm}
     password: ${YGOR_PASSWORD_DB:1234}
   jpa:
@@ -29,7 +29,7 @@ mqtt:
   username: ygor_admin
   password: TESTE_1234
   host-url:
-    - tcp://93:188:161.151:1883
+    - tcp://localhost:1883
   client-id: mqttId2
   default-topic: topic
   connection-timeout: 3000
