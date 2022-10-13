@@ -54,12 +54,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/v1/livro/**")
-                        .hasAnyRole("BI_GESTOR","BI_ASSISTENTE")
-                    .antMatchers("/v1/login-admin/**")
+                    .antMatchers("/v1/teste/**")
+                        .hasAnyRole("ADMINISTRADOR","VISUALIZADOR")
+                    .antMatchers("/v1/acesso/**")
+                        .permitAll()
+                    .antMatchers("/v1/dados/**")
                         .permitAll()
                 .and()
-
                     .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 

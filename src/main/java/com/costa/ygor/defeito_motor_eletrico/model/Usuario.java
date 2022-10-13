@@ -19,9 +19,6 @@ public class Usuario {
     @Column(name = "SENHA")
     private String senha;
 
-    @Column(name = "PERFIL_USUARIO")
-    private String perfilUsuario;
-
     @Column(name = "ALTERAR_SENHA")
     private Boolean alterarSenha;
 
@@ -39,7 +36,6 @@ public class Usuario {
 
     public Usuario(String email,
                    String senha,
-                   String perfilUsuario,
                    Boolean alterarSenha,
                    String nome,
                    LocalDateTime dataCadastro,
@@ -47,7 +43,6 @@ public class Usuario {
                    Boolean bloqueado) {
         this.email = email;
         this.senha = senha;
-        this.perfilUsuario = perfilUsuario;
         this.alterarSenha = alterarSenha;
         this.nome = nome;
         this.dataCadastro = dataCadastro;
@@ -86,14 +81,6 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getPerfilUsuario() {
-        return perfilUsuario;
-    }
-
-    public void setPerfilUsuario(String perfilUsuario) {
-        this.perfilUsuario = perfilUsuario;
     }
 
     public Boolean getAlterarSenha() {

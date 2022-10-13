@@ -5,15 +5,15 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "cg17_perfil_usuario")
-@SequenceGenerator(name = "CG17_PERFIL_USUARIO_CG17_COD_PERFIL_USUARIO_SEQ",
-        sequenceName = "CG17_PERFIL_USUARIO_CG17_COD_PERFIL_USUARIO_SEQ",
+@Table(name = "perfil_usuario")
+@SequenceGenerator(name = "PERFIL_USUARIO_COD_PERFIL_USUARIO_SEQ",
+        sequenceName = "PERFIL_USUARIO_COD_PERFIL_USUARIO_SEQ",
         allocationSize = 1)
 public class UsuarioPerfil implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "CG17_PERFIL_USUARIO_CG17_COD_PERFIL_USUARIO_SEQ", strategy = GenerationType.SEQUENCE)
-    @Column(name = "cg17_cod_perfil_usuario")
+    @GeneratedValue(generator = "PERFIL_USUARIO_COD_PERFIL_USUARIO_SEQ", strategy = GenerationType.SEQUENCE)
+    @Column(name = "cod_perfil_usuario")
     private Long id;
 
     @OneToOne
