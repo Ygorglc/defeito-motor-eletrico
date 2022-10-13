@@ -6,6 +6,8 @@ spring:
     url: ${YGOR_DB:jdbc:postgresql://93.188.161.151:5432/TCC}
     username: ${YGOR_USER_DB:ygor_adm}
     password: ${YGOR_PASSWORD_DB:1234}
+  main:
+    allow-circular-references: true
   jpa:
     show-sql: true
     generate-ddl: true
@@ -24,6 +26,10 @@ server:
 acesso-externo:
   uri: http://gateway-server:5555/siisp-acesso/v1/usuarios/cpf/
 
+security:
+  jwt:
+    expiracao: 86400
+    chave-assinatura: b25lLWZvci1hbGw=
 
 mqtt:
   username: ygor_admin

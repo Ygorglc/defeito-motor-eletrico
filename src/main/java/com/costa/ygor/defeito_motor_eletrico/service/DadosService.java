@@ -1,8 +1,5 @@
 package com.costa.ygor.defeito_motor_eletrico.service;
 
-import com.costa.ygor.defeito_motor_eletrico.controller.dto.AceleracaoDto;
-import com.costa.ygor.defeito_motor_eletrico.controller.dto.DadosDto;
-import com.costa.ygor.defeito_motor_eletrico.controller.dto.TempoDto;
 import com.costa.ygor.defeito_motor_eletrico.controller.request.DadosRequest;
 import com.costa.ygor.defeito_motor_eletrico.controller.response.DadosResponse;
 import com.costa.ygor.defeito_motor_eletrico.exception.EntidadeNaoEncontradaException;
@@ -19,8 +16,6 @@ import java.util.List;
 @Service
 public class DadosService {
 
-    private EspRestEndPointService espRestEndPointService;
-
     private TesteRepository testeRepository;
 
     private AceleracaoRepository aceleracaoRepository;
@@ -32,8 +27,7 @@ public class DadosService {
     private DeslocamentoRepository deslocamentoRepository;
 
 
-    public DadosService(EspRestEndPointService espRestEndPointService, TesteRepository testeRepository, AceleracaoRepository aceleracaoRepository, TempoRepository tempoRepository, GiroRepository giroRepository, DeslocamentoRepository deslocamentoRepository) {
-        this.espRestEndPointService = espRestEndPointService;
+    public DadosService(TesteRepository testeRepository, AceleracaoRepository aceleracaoRepository, TempoRepository tempoRepository, GiroRepository giroRepository, DeslocamentoRepository deslocamentoRepository) {
         this.testeRepository = testeRepository;
         this.aceleracaoRepository = aceleracaoRepository;
         this.tempoRepository = tempoRepository;
@@ -41,44 +35,44 @@ public class DadosService {
         this.deslocamentoRepository = deslocamentoRepository;
     }
 
-    public List<Aceleracao> buscarAceleracao(Long quantidadeDeAmostras, Long idTeste) throws Exception {
-        List<AceleracaoDto> aceleracaoDtoLista = espRestEndPointService.recuperaAceleracao(quantidadeDeAmostras);
-        List<Aceleracao> aceleracaoList = new ArrayList<>();
-        List<Aceleracao> aceleracaoSalvoList = new ArrayList<>();
+//    public List<Aceleracao> buscarAceleracao(Long quantidadeDeAmostras, Long idTeste) throws Exception {
+//        List<AceleracaoDto> aceleracaoDtoLista = espRestEndPointService.recuperaAceleracao(quantidadeDeAmostras);
+//        List<Aceleracao> aceleracaoList = new ArrayList<>();
+//        List<Aceleracao> aceleracaoSalvoList = new ArrayList<>();
+//
+//        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
+//
+////        aceleracaoDtoLista.forEach(aceleracaoDto -> aceleracaoList.add(new Aceleracao(aceleracaoDto.getAceleracao(),teste)));
+////        aceleracaoList.forEach(aceleracao -> aceleracaoSalvoList.add(aceleracaoRepository.save(aceleracao)));
+//        return aceleracaoSalvoList;
+//    }
 
-        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
+//    public List<Tempo> buscarTempo(Long quantidadeDeAmostras, Long idTeste) throws Exception {
+//        List<TempoDto> tempoDtoList = espRestEndPointService.recuperaTempo(quantidadeDeAmostras);
+//        List<Tempo> tempoList = new ArrayList<>();
+//        List<Tempo> tempoSalvoList = new ArrayList<>();
+//
+//        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
+//
+//        tempoDtoList.forEach(tempoDto -> tempoList.add(new Tempo(tempoDto.getTempo(),teste)));
+//        tempoList.forEach(tempo -> tempoSalvoList.add(tempoRepository.save(tempo)));
+//        return tempoSalvoList;
+//    }
 
-//        aceleracaoDtoLista.forEach(aceleracaoDto -> aceleracaoList.add(new Aceleracao(aceleracaoDto.getAceleracao(),teste)));
-//        aceleracaoList.forEach(aceleracao -> aceleracaoSalvoList.add(aceleracaoRepository.save(aceleracao)));
-        return aceleracaoSalvoList;
-    }
-
-    public List<Tempo> buscarTempo(Long quantidadeDeAmostras, Long idTeste) throws Exception {
-        List<TempoDto> tempoDtoList = espRestEndPointService.recuperaTempo(quantidadeDeAmostras);
-        List<Tempo> tempoList = new ArrayList<>();
-        List<Tempo> tempoSalvoList = new ArrayList<>();
-
-        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
-
-        tempoDtoList.forEach(tempoDto -> tempoList.add(new Tempo(tempoDto.getTempo(),teste)));
-        tempoList.forEach(tempo -> tempoSalvoList.add(tempoRepository.save(tempo)));
-        return tempoSalvoList;
-    }
-
-    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) throws Exception {
-        List<DadosDto> dadosDtoList = espRestEndPointService.recuperaDados(quantidadeDeAmostras);
-        List<Aceleracao> aceleracaoList = new ArrayList<>();
-        List<Aceleracao> aceleracaoSalvoList = new ArrayList<>();
-        List<Tempo> tempoList = new ArrayList<>();
-        List<Tempo> tempoSalvoList = new ArrayList<>();
-
-        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
-
-        List<DadosResponse> dadosResponseList = new ArrayList<>();
-
-        return  new ArrayList<>();
-
-    }
+//    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) throws Exception {
+//        List<DadosDto> dadosDtoList = espRestEndPointService.recuperaDados(quantidadeDeAmostras);
+//        List<Aceleracao> aceleracaoList = new ArrayList<>();
+//        List<Aceleracao> aceleracaoSalvoList = new ArrayList<>();
+//        List<Tempo> tempoList = new ArrayList<>();
+//        List<Tempo> tempoSalvoList = new ArrayList<>();
+//
+//        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
+//
+//        List<DadosResponse> dadosResponseList = new ArrayList<>();
+//
+//        return  new ArrayList<>();
+//
+//    }
 
 
 //    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) throws Exception {
@@ -98,9 +92,9 @@ public class DadosService {
 //
 //    private Map<Aceleracao,Tempo>
 
-    public void recuperarDados(Long quantidadeDeAmostras) {
-        espRestEndPointService.coletaDados(quantidadeDeAmostras);
-    }
+//    public void recuperarDados(Long quantidadeDeAmostras) {
+//        espRestEndPointService.coletaDados(quantidadeDeAmostras);
+//    }
 
 //    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) {
 //    }
