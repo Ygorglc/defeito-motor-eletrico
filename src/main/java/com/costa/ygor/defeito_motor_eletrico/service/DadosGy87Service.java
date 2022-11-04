@@ -38,69 +38,6 @@ public class DadosGy87Service {
     }
 
 
-    //    public List<Aceleracao> buscarAceleracao(Long quantidadeDeAmostras, Long idTeste) throws Exception {
-//        List<AceleracaoDto> aceleracaoDtoLista = espRestEndPointService.recuperaAceleracao(quantidadeDeAmostras);
-//        List<Aceleracao> aceleracaoList = new ArrayList<>();
-//        List<Aceleracao> aceleracaoSalvoList = new ArrayList<>();
-//
-//        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
-//
-////        aceleracaoDtoLista.forEach(aceleracaoDto -> aceleracaoList.add(new Aceleracao(aceleracaoDto.getAceleracao(),teste)));
-////        aceleracaoList.forEach(aceleracao -> aceleracaoSalvoList.add(aceleracaoRepository.save(aceleracao)));
-//        return aceleracaoSalvoList;
-//    }
-
-//    public List<Tempo> buscarTempo(Long quantidadeDeAmostras, Long idTeste) throws Exception {
-//        List<TempoDto> tempoDtoList = espRestEndPointService.recuperaTempo(quantidadeDeAmostras);
-//        List<Tempo> tempoList = new ArrayList<>();
-//        List<Tempo> tempoSalvoList = new ArrayList<>();
-//
-//        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
-//
-//        tempoDtoList.forEach(tempoDto -> tempoList.add(new Tempo(tempoDto.getTempo(),teste)));
-//        tempoList.forEach(tempo -> tempoSalvoList.add(tempoRepository.save(tempo)));
-//        return tempoSalvoList;
-//    }
-
-//    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) throws Exception {
-//        List<DadosDto> dadosDtoList = espRestEndPointService.recuperaDados(quantidadeDeAmostras);
-//        List<Aceleracao> aceleracaoList = new ArrayList<>();
-//        List<Aceleracao> aceleracaoSalvoList = new ArrayList<>();
-//        List<Tempo> tempoList = new ArrayList<>();
-//        List<Tempo> tempoSalvoList = new ArrayList<>();
-//
-//        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
-//
-//        List<DadosResponse> dadosResponseList = new ArrayList<>();
-//
-//        return  new ArrayList<>();
-//
-//    }
-
-
-//    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) throws Exception {
-//        List<DadosDto> dadosDtoList = espRestEndPointService.recuperaDados(quantidadeDeAmostras);
-//        List<Aceleracao> aceleracaoList = new ArrayList<>();
-//        List<Aceleracao> aceleracaoSalvoList = new ArrayList<>();
-//        List<Tempo> tempoList = new ArrayList<>();
-//        List<Tempo> tempoSalvoList = new ArrayList<>();
-//
-//        Teste teste = testeRepository.findById(idTeste).orElseThrow(()-> new Exception("sdbfds"));
-//
-//        List<DadosResponse> dadosResponseList = new ArrayList<>();
-//
-//        dadosDtoList.forEach(dadosDto -> );
-//
-//    }
-//
-//    private Map<Aceleracao,Tempo>
-
-//    public void recuperarDados(Long quantidadeDeAmostras) {
-//        espRestEndPointService.coletaDados(quantidadeDeAmostras);
-//    }
-
-//    public List<DadosResponse> buscarDados(Long quantidadeDeAmostras, Long idTeste) {
-//    }
 
     public Boolean salvandoDadosRequest(DadosGy87Request dadosRequest){
         Teste teste = testeRepository.findById(dadosRequest.idt()).orElseThrow(()->new EntidadeNaoEncontradaException("Não foi encontrado teste com esse id!!"));
