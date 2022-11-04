@@ -105,7 +105,7 @@ public class DadosGy87Service {
         Giro giro = new Giro(dadosRequest.p(), dadosRequest.gx(), dadosRequest.gy(), dadosRequest.gz(), teste);
         Giro giroSalvo = giroRepository.save(giro);
 
-        Tempo tempo = new Tempo(dadosRequest.t(),teste);
+        Tempo tempo = new Tempo(dadosRequest.p(), dadosRequest.t(),teste);
         Tempo tempoSalvo = tempoRepository.save(tempo);
 
         return true;

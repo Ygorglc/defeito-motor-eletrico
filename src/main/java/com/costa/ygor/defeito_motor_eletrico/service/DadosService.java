@@ -107,7 +107,7 @@ public class DadosService {
         Giro giro = new Giro(dadosRequest.posicao(), dadosRequest.giro_eixo_x(), dadosRequest.giro_eixo_y(), dadosRequest.giro_eixo_z(), teste);
         Giro giroSalvo = giroRepository.save(giro);
 
-        Tempo tempo = new Tempo(dadosRequest.tempo(),teste);
+        Tempo tempo = new Tempo(dadosRequest.posicao(), dadosRequest.tempo(),teste);
         Tempo tempoSalvo = tempoRepository.save(tempo);
 
         return new DadosResponse(aceleracaoSalva.getEixo_x(),

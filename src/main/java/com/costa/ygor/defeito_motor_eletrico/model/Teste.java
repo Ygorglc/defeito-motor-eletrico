@@ -47,6 +47,14 @@ public class Teste {
     @JoinColumn(name = "FK_GIRO")
     private List<Giro> giros;
 
+    @OneToMany
+    @JoinColumn(name = "FK_BAROMETRO")
+    private List<Barometro> barometros;
+
+    @OneToMany
+    @JoinColumn(name = "FK_MAGNETOMETRO")
+    private List<Magnetometro> magnetometros;
+
     @OneToOne
     @JoinColumn(name = "FK_RESULTADO")
     private Resultado resultado;
