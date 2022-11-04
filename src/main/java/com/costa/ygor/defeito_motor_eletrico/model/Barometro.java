@@ -15,15 +15,15 @@ public class Barometro {
     private Long posicao;
 
     @Column(name = "PRESSAO_ATMOSFERICA")
-    private Double valorTempo;
+    private Double pressaoAtmosferica;
 
     @ManyToOne
     @JoinColumn(name = "FKPRESSAO_ATMOSFERICA_TESTE")
     private Teste teste;
 
-    public Barometro(Long posicao, Double valorTempo, Teste teste) {
+    public Barometro(Long posicao, Double pressaoAtmosferica, Teste teste) {
         this.posicao = posicao;
-        this.valorTempo = valorTempo;
+        this.pressaoAtmosferica = pressaoAtmosferica;
         this.teste = teste;
     }
 
@@ -43,12 +43,12 @@ public class Barometro {
         this.posicao = posicao;
     }
 
-    public Double getValorTempo() {
-        return valorTempo;
+    public Double getPressaoAtmosferica() {
+        return pressaoAtmosferica;
     }
 
-    public void setValorTempo(Double valorTempo) {
-        this.valorTempo = valorTempo;
+    public void setPressaoAtmosferica(Double pressaoAtmosferica) {
+        this.pressaoAtmosferica = pressaoAtmosferica;
     }
 
     public Teste getTeste() {

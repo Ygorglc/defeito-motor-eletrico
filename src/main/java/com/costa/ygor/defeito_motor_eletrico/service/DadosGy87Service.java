@@ -4,10 +4,7 @@ import com.costa.ygor.defeito_motor_eletrico.controller.request.DadosGy87Request
 import com.costa.ygor.defeito_motor_eletrico.controller.request.DadosRequest;
 import com.costa.ygor.defeito_motor_eletrico.controller.response.DadosResponse;
 import com.costa.ygor.defeito_motor_eletrico.exception.EntidadeNaoEncontradaException;
-import com.costa.ygor.defeito_motor_eletrico.model.Aceleracao;
-import com.costa.ygor.defeito_motor_eletrico.model.Giro;
-import com.costa.ygor.defeito_motor_eletrico.model.Tempo;
-import com.costa.ygor.defeito_motor_eletrico.model.Teste;
+import com.costa.ygor.defeito_motor_eletrico.model.*;
 import com.costa.ygor.defeito_motor_eletrico.repositories.*;
 import org.springframework.stereotype.Service;
 
@@ -22,18 +19,26 @@ public class DadosGy87Service {
 
     private GiroRepository giroRepository;
 
-    private DeslocamentoRepository deslocamentoRepository;
+    private BarometroRepository barometroRepository;
 
+    private MagnetometroRepository magnetometroRepository;
 
-    public DadosGy87Service(TesteRepository testeRepository, AceleracaoRepository aceleracaoRepository, TempoRepository tempoRepository, GiroRepository giroRepository, DeslocamentoRepository deslocamentoRepository) {
+    public DadosGy87Service(TesteRepository testeRepository,
+                            AceleracaoRepository aceleracaoRepository,
+                            TempoRepository tempoRepository,
+                            GiroRepository giroRepository,
+                            BarometroRepository barometroRepository,
+                            MagnetometroRepository magnetometroRepository) {
         this.testeRepository = testeRepository;
         this.aceleracaoRepository = aceleracaoRepository;
         this.tempoRepository = tempoRepository;
         this.giroRepository = giroRepository;
-        this.deslocamentoRepository = deslocamentoRepository;
+        this.barometroRepository = barometroRepository;
+        this.magnetometroRepository = magnetometroRepository;
     }
 
-//    public List<Aceleracao> buscarAceleracao(Long quantidadeDeAmostras, Long idTeste) throws Exception {
+
+    //    public List<Aceleracao> buscarAceleracao(Long quantidadeDeAmostras, Long idTeste) throws Exception {
 //        List<AceleracaoDto> aceleracaoDtoLista = espRestEndPointService.recuperaAceleracao(quantidadeDeAmostras);
 //        List<Aceleracao> aceleracaoList = new ArrayList<>();
 //        List<Aceleracao> aceleracaoSalvoList = new ArrayList<>();
@@ -107,6 +112,12 @@ public class DadosGy87Service {
 
         Tempo tempo = new Tempo(dadosRequest.p(), dadosRequest.t(),teste);
         Tempo tempoSalvo = tempoRepository.save(tempo);
+
+        Barometro barometro = new Barometro(dadosRequest.p(), dadosRequest.b(), teste);
+        Barometro barometroSalvo = barometroRepository.save(barometro);
+
+        Magnetometro magnetometro = new Magnetometro( dadosRequest.mx(), dadosRequest.my(), dadosRequest.mz(), teste);
+        Magnetometro magnetometroSalvo = magnetometroRepository.save(magnetometro);
 
         return true;
     }
